@@ -1,12 +1,219 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}SYMFONY 5 ::{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}Aumonerie Militaire Catholique du Diocèse d'Abidjan{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ absolute_url(asset('assets/css/style.css')) }}">
+            <link rel="stylesheet" href="{{ absolute_url(asset('assets/css/responsive.css')) }}">
+        {% endblock %}
     </head>
     <body>
+        <section id="aumonerie-header">
+        <div class="top-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 float-left header-rs-icons">
+                        <a href="#" class="icon-facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="icon-twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="icon-instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="icon-youtube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <div class="col-6 text-right float-right header-btn-don">
+                        <a href="#" class="btn btn-danger btn-don"><i class="fas fa-hand-holding-heart"></i> Faire un don</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="assets/images/logo-sm.png" alt="Logo aumonerie" width="75">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile_nav" aria-controls="mobile_nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mobile_nav">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0 float-md-right">
+                    </ul>
+                    <ul class="navbar-nav navbar-light">
+                        <li class="nav-item"><a class="nav-link" href="#">Accueil</a></li>
+                        <li class="nav-item menu dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="presentationDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Qui sommes-nous?
+                            </a>
+                            <div class="dropdown-menu sm-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="page.html">Présentation</a>
+                                <a class="dropdown-item" href="statuts.html">Statuts & reglement interieur</a>
+                                <a class="dropdown-item" href="aumonier.html">Aumônerie Militaire Catholique</a>
+                                <a class="dropdown-item" href="aumonier.html">L'aumônier</a>
+                                <a class="dropdown-item" href="aumonier.html">Mission</a>
+                                <a class="dropdown-item" href="president.html">Le conseil pastoral militaire</a>
+                                <a class="dropdown-item" href="#">Les départements</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#">Actualités</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Programmes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Fraterntés</a></li>
+                        <li class="nav-item menu dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="bibliothequeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Bibliothèque
+                            </a>
+                            <div class="dropdown-menu sm-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Vidéo</a>
+                                <a class="dropdown-item" href="#">Photo</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#">Boutique</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </section>
+
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+        <section id="aumonerie-footer">
+            <div class="logo-corporation d-none d-md-block">
+                <div class="flex-row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <div class="row">
+                            <div class="d-flex justify-content-center text-center align-items-center">
+                                <div class="col">
+                                    <img src="{{ absolute_url(asset('assets/images/logo/logo_vatican.svg')) }}" alt="" class="img-fluid">
+                                </div>
+                                <div class="col">
+                                    <img src="{{ absolute_url(asset('assets/images/logo/logo_rci.svg')) }}" alt="" class="img-fluid">
+                                </div>
+                                <div class="col">
+                                    <img src="{{ absolute_url(asset('assets/images/logo/logo_md-rci.svg')) }}" alt="" class="img-fluid">
+                                </div>
+                                <div class="col">
+                                    <img src="{{ absolute_url(asset('assets/images/logo/logo_emga.svg')) }}" alt="" class="img-fluid">
+                                </div>
+                                <div class="col">
+                                    <img src="{{ absolute_url(asset('assets/images/logo/logo_gendarmerie.svg')) }}" alt="" class="img-fluid">
+                                </div>
+                                <div class="col">
+                                    <img src="{{ absolute_url(asset('assets/images/logo/logo_police.svg')) }}" alt="" class="img-fluid">
+                                </div>
+                                <div class="col">
+                                    <img src="{{ absolute_url(asset('assets/images/logo/logo_douane.svg')) }}" alt="" class="img-fluid">
+                                </div>
+                                <div class="col">
+                                    <img src="{{ absolute_url(asset('assets/images/logo/logo_forets.svg')) }}" alt="" class="img-fluid">
+                                </div>
+                                <div class="col">
+                                    <img src="{{ absolute_url(asset('assets/images/logo/logo_marin.svg')) }}" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="footer-colonne">
+                            <h5 class="rubrique">Rubriques</h5>
+                            <div class="row">
+                                <div class="col liste">
+                                    <ul>
+                                        <li><a href="#">Présentation</a></li>
+                                        <li><a href="#">Les aumôniers</a></li>
+                                        <li><a href="#">Conseil pastoral militaire</a></li>
+                                        <li><a href="#">Les départements</a></li>
+                                        <li><a href="#">Bureau</a></li>
+                                        <li><a href="#">La vie des fraternités</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col liste">
+                                    <ul>
+                                        <li><a href="#">Actualités</a></li>
+                                        <li><a href="#">Programmes</a></li>
+                                        <li><a href="#">Vidéothèque</a></li>
+                                        <li><a href="#">Photothèque</a></li>
+                                        <li><a href="#">Boutique</a></li>
+                                        <li><a href="#">Faire un don</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="footer-colonne">
+                            <h5 class="rubrique">Faire un don</h5>
+                            <div class="row">
+                                <div class="col footer-don">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-cc-paypal"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-cc-visa"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-cc-discover"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-cc-mastercard"></i></a></li>
+                                        <li><img src="assets/images/icons/mobile.png" alt="Logo CinetPay" class="img-fluid" width="150"></li>
+                                    </ul>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="footer-colonne">
+                            <h5 class="rubrique">Contact</h5>
+                            <div class="row">
+                                <div class="col liste">
+                                    <ul>
+                                        <li><i class="fa fa-map-pin"></i> Paroisse Saint Albert le Grand Cocody CHU</li>
+                                        <li><i class="fa fa-phone-volume"></i> +225 03 12 30 06 / 08 37 17 79 / 01 43 99 89</li>
+                                        <li><i class="fa fa-envelope"></i>
+                                            <a href="mailto:aumoneriemilitairecatholique.abj@gmail.com">aumoneriemilitairecatholique.abj@gmail.com</a>
+                                        </li>
+                                    </ul>
+                                    <div class="footer-rs-icons justify-content-center">
+                                        <ul class="align-items-center">
+                                            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="copyright-text">
+                                &copy; Copyright, 2020 <a href="#">Aumonerie Militaire Catholique d'Abidjan</a> | Tous droits réservés
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="backoffice-text text-right">
+                                <a href="#">Backoffice</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        {% block javascripts %}
+            <script src="{{ absolute_url(asset('assets/js/jquery.min.js')) }}"></script>
+            <script src="{{ absolute_url(asset('assets/vendor/bootstrap/js/bootstrap.min.js')) }}"></script>
+            <script src="{{ absolute_url(asset('assets/vendor/OwlCarousel/owl.carousel.js')) }}"></script>
+            <script src="{{ absolute_url(asset('assets/js/app.js')) }}"></script>
+        {% endblock %}
     </body>
 </html>
