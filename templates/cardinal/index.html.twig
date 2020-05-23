@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cardinal index{% endblock %}
+
+{% block body %}
+    <h1>Cardinal index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Annee</th>
+                <th>Theme</th>
+                <th>Titre</th>
+                <th>Message</th>
+                <th>Photo</th>
+                <th>CreatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cardinal in cardinals %}
+            <tr>
+                <td>{{ cardinal.id }}</td>
+                <td>{{ cardinal.annee }}</td>
+                <td>{{ cardinal.theme }}</td>
+                <td>{{ cardinal.titre }}</td>
+                <td>{{ cardinal.message }}</td>
+                <td>{{ cardinal.photo }}</td>
+                <td>{{ cardinal.createdAt ? cardinal.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('cardinal_show', {'id': cardinal.id}) }}">show</a>
+                    <a href="{{ path('cardinal_edit', {'id': cardinal.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('cardinal_new') }}">Create new</a>
+{% endblock %}

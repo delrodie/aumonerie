@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cardinal{% endblock %}
+
+{% block body %}
+    <h1>Cardinal</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cardinal.id }}</td>
+            </tr>
+            <tr>
+                <th>Annee</th>
+                <td>{{ cardinal.annee }}</td>
+            </tr>
+            <tr>
+                <th>Theme</th>
+                <td>{{ cardinal.theme }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ cardinal.titre }}</td>
+            </tr>
+            <tr>
+                <th>Message</th>
+                <td>{{ cardinal.message }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ cardinal.photo }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ cardinal.createdAt ? cardinal.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('cardinal_index') }}">back to list</a>
+
+    <a href="{{ path('cardinal_edit', {'id': cardinal.id}) }}">edit</a>
+
+    {{ include('cardinal/_delete_form.html.twig') }}
+{% endblock %}

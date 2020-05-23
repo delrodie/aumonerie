@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Cardinal{% endblock %}
+
+{% block body %}
+    <h1>Create new Cardinal</h1>
+
+    {{ include('cardinal/_form.html.twig') }}
+
+    <a href="{{ path('cardinal_index') }}">back to list</a>
+{% endblock %}
