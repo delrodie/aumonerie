@@ -1,4 +1,40 @@
 {{ form_start(form) }}
+    <div class="row">
+        <div class="col-lg-6">
+
+            <div class="form-group">
+                {{ form_row(form.annee) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.theme) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.titre) }}
+            </div>
+            <div class="form-group">
+                    <div class="row">
+                        {% if cardinal.photo %}
+                        <div class="col-4">
+                            <img src="{{ asset('uploads/presentation/' ~ cardinal.photo) }}" alt="" class="img-fluid mt-3">
+                        </div>
+                        {% endif %}
+                        <div class="col-8 mt-5">
+                            {{ form_row(form.photo) }}
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                {{ form_row(form.message) }}
+            </div>
+        </div>
+    </div>
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="text-right mt-5">
+        <a href="{{ path('cardinal_index') }}" class="btn btn-secondary">Annuler</a>
+        <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+    </div>
+
 {{ form_end(form) }}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>{% block title %}Backoffice ::{% endblock %}</title>
+
+    <meta content="Backoffice de la webTV" name="description" />
+    <meta content="Dream Maker, Delrodie AMOIKON" name="author" />
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ absolute_url(asset('backoffice/css/bootstrap.min.css')) }}">
+        <link rel="stylesheet" href="{{ absolute_url(asset('backoffice/plugins/animate/animate.css')) }}">
+        <link rel="stylesheet" href="{{ absolute_url(asset('backoffice/css/icons.css')) }}">
+        <link rel="stylesheet" href="{{ absolute_url(asset('backoffice/css/style.css')) }}">
+    {% endblock %}
+</head>
+<body class="fixed-left">
+<div id="stars"></div>
+<div id="stars2"></div>
+
+<div id="wrapper">
+    <div class="left side-menu">
+        <button type="button" class="button-menu-mobile button-menu-mobile-topbar open-left waves-effect waves-light">
+            <i class="ion-close"></i>
+        </button>
+
+        <div class="topbar-left">
+            <div class="text-center">
+                <a href="{{ path('app_accueil') }}" class="logo"><img src="{{ asset('backoffice/images/icon.png') }}" width="50" alt="logo"></a>
+            </div>
+        </div>
+
+
+        <div class="sidebar-inner slimscrollleft" id="sidebar-main">
+
+            <div id="sidebar-menu">
+                <ul>
+                    <li>
+                        <a href="#" class="waves-effect waves-light">
+                            <i class="mdi mdi-view-dashboard"></i><span> Tableau de bord </span>
+                        </a>
+                    </li>
+
+
+                    <li class="menu-title">Menu</li>
+
+
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect waves-light"><i class="mdi mdi-table"></i><span> Qui sommes-nous? </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="list-unstyled">
+                            <li><a href="{{ path('cardinal_index') }}">Cardinal</a></li>
+                            <li><a href="#">Sliders</a></li>
+                            <li><a href="#">Categorie slider</a></li>
+                            <li><a href="#">Event</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect waves-light"><i class="fa fa-cubes"></i><span> Produits </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Article</a></li>
+                            <li><a href="#">Famille</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect waves-light"><i class="fa fa-cogs"></i><span> Paramètre </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Rubrique</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="menu-title">Administrateur</li>
+
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect waves-light"><i class="fa fa-cog"></i><span> Paramètres </span><span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="list-unstyled">
+                            <li><a href="#"> Utilisteurs</a></li>
+                            <li><a href="{{ path('app_monitoring') }}"> Log</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="content-page">
+        <div class="content">
+            <div class="topbar">
+                <nav class="navbar-custom">
+                    <ul class="list-inline float-right mb-0">
+
+
+                        <li class="list-inline-item dropdown notification-list">
+                            <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
+                               aria-haspopup="false" aria-expanded="false">
+                                <img src="{{ absolute_url(asset('assets/images/avatar.png')) }}" alt="user" class="rounded-circle">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                                <div class="dropdown-item noti-title">
+                                    <h5>Welcome</h5>
+                                </div>
+                                <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle "></i> Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-danger" href="{{ path('app_logout') }}"><i class="mdi mdi-power text-danger"></i> Deconnexion</a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="list-inline menu-left mb-0">
+                        <li class="float-left">
+                            <button class="button-menu-mobile open-left waves-light waves-effect">
+                                <i class="mdi mdi-menu"></i>
+                            </button>
+                        </li>
+                        <li class="hide-phone app-search">
+                            <form role="search" class="">
+                                <input type="text" placeholder="Recherche..." class="form-control">
+                                <a href="#"><i class="fa fa-search"></i></a>
+                            </form>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </nav>
+            </div>
+
+            {% block body %}{% endblock %}
+
+        </div>
+        <footer class="footer">
+            © 2020 Dream Maker
+        </footer>
+    </div>
+</div>
+
+
+{% block javascripts %}
+    <script src="{{ absolute_url(asset('backoffice/js/jquery.min.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/js/popper.min.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/js/bootstrap.min.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/js/modernizr.min.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/js/detect.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/js/fastclick.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/js/jquery.slimscroll.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/js/jquery.blockUI.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/js/waves.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/js/jquery.nicescroll.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/js/jquery.scrollTo.min.js')) }}"></script>
+    <script src="{{ asset('backoffice/pages/form-advanced.js') }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/js/app.js')) }}"></script>
+{% endblock %}
+</body>
+</html>

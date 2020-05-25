@@ -31,3 +31,9 @@ services:
         public: true
         tags:
             - { name: monolog.logger,channel: app}
+
+    App\Utilities\GestionMedia:
+        arguments:
+            $mediaDirectory: '%kernel.project_dir%/public/uploads'
+            $presentationDirectory: '%kernel.project_dir%/public/uploads/presentation'
+            $actualiteDirectory: '%kernel.project_dir%/public/uploads/actualites'

@@ -22,7 +22,7 @@ class CardinalType extends AbstractType
             ->add('message', TextareaType::class,['attr'=>['class'=>'form-control summernote', 'rows'=>"5"]])
             ->add('photo', FileType::class,[
                 'mapped'=>false,
-                'required' =>true,
+                'required' =>false,
                 'constraints'=>[
                     new File([
                         'maxSize' => '100000k',

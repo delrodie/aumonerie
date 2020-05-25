@@ -1,46 +1,65 @@
-{% extends 'base.html.twig' %}
+{% extends 'backoffice_layout.html.twig' %}
 
 {% block title %}Cardinal{% endblock %}
 
 {% block body %}
-    <h1>Cardinal</h1>
+    <div class="page-content-wrapper dashboard">
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ cardinal.id }}</td>
-            </tr>
-            <tr>
-                <th>Annee</th>
-                <td>{{ cardinal.annee }}</td>
-            </tr>
-            <tr>
-                <th>Theme</th>
-                <td>{{ cardinal.theme }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ cardinal.titre }}</td>
-            </tr>
-            <tr>
-                <th>Message</th>
-                <td>{{ cardinal.message }}</td>
-            </tr>
-            <tr>
-                <th>Photo</th>
-                <td>{{ cardinal.photo }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ cardinal.createdAt ? cardinal.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="container-fluid">
 
-    <a href="{{ path('cardinal_index') }}">back to list</a>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Gestion des messages du Cardinal </h4>
+                    </div>
+                </div>
+            </div>
 
-    <a href="{{ path('cardinal_edit', {'id': cardinal.id}) }}">edit</a>
+            <div class="row">
+                <div class="col-md-12 col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
 
-    {{ include('cardinal/_delete_form.html.twig') }}
+                            <h4 class="mt-0 mb-5 header-title">
+                                <div class="float-right">
+                                    <a href="{{ path('cardinal_new') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Ajouter un message</a>
+                                    <a href="{{ path('cardinal_edit',{'id': cardinal.id}) }}" class="btn btn-danger"><i class="fa fa-edit"></i> Modifier</a>
+                                    <a href="{{ path('cardinal_index') }}" class="btn btn-secondary"><i class="fa fa-list"></i> Liste des messages</a>
+                                </div>
+                            </h4>
+
+                            <div class="row mt-5">
+                                <div class="col-md-5 col-lg-3">
+                                    <div class="card m-b-30">
+                                        <div class="card-body">
+                                            <img src="{{ asset('uploads/presentation/' ~ cardinal.photo) }}" alt="" class="img-fluid  mx-auto d-block">
+
+                                            <p class="card-text mt-2">
+                                                <a href="#"><span class="badge badge-danger">{{ cardinal.annee }}</span> </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-7 col-lg-9">
+                                    <div class="card m-b-30">
+                                        <div class="card-body">
+                                            <h5 class="card-title"> <a href="{{ path('cardinal_show', {'id': cardinal.id}) }}">{{ cardinal.theme }}</a></h5>
+                                            <p class="card-text">
+                                                {{ cardinal.message|striptags|raw }}
+                                            </p>
+                                            {{ include('cardinal/_delete_form.html.twig') }}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 {% endblock %}

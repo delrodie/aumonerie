@@ -1,45 +1,77 @@
-{% extends 'base.html.twig' %}
+{% extends 'backoffice_layout.html.twig' %}
 
 {% block title %}Cardinal index{% endblock %}
 
 {% block body %}
-    <h1>Cardinal index</h1>
+    <div class="page-content-wrapper dashboard">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Annee</th>
-                <th>Theme</th>
-                <th>Titre</th>
-                <th>Message</th>
-                <th>Photo</th>
-                <th>CreatedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for cardinal in cardinals %}
-            <tr>
-                <td>{{ cardinal.id }}</td>
-                <td>{{ cardinal.annee }}</td>
-                <td>{{ cardinal.theme }}</td>
-                <td>{{ cardinal.titre }}</td>
-                <td>{{ cardinal.message }}</td>
-                <td>{{ cardinal.photo }}</td>
-                <td>{{ cardinal.createdAt ? cardinal.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('cardinal_show', {'id': cardinal.id}) }}">show</a>
-                    <a href="{{ path('cardinal_edit', {'id': cardinal.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="container-fluid">
 
-    <a href="{{ path('cardinal_new') }}">Create new</a>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Messages du Cardinal </h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <h4 class="mt-0 header-title">
+                                Liste des messages
+                                <div class="float-right">
+                                    <a href="{{ path('cardinal_new') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Ajouter un message</a>
+                                </div>
+                            </h4>
+
+                            {% for label, messages in app.flashes %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{ label }} alert-dismissible fade show d-flex align-items-center" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        {% if label =="success" %}
+                                            <i class="mdi mdi-checkbox-marked-circle font-32"></i>
+                                            <strong class="pr-1">Succes !</strong>
+                                        {% else %}
+                                            <i class="mdi mdi-close-circle font-32"></i>
+                                            <strong class="pr-1">Erreur !</strong>
+                                        {% endif %}
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+
+                            <div class="row">
+                                {% for cardinal in cardinals %}
+                                    <div class="col-md-6 col-xl-4">
+                                        <div class="card m-b-30">
+                                            <img class="card-img-top img-fluid" src="{{ absolute_url(asset('uploads/presentation/' ~ cardinal.photo)) }}" alt="{{ cardinal.theme }}">
+                                            <div class="card-body">
+                                                <h5 class="card-title"><span class="badge badge-primary">{{ cardinal.annee }}</span> <a href="{{ path('cardinal_show', {'id': cardinal.id}) }}">{{ cardinal.titre }}</a></h5>
+                                                <p class="card-text">
+                                                    {{ cardinal.message|striptags|slice(0,75)|raw }}...
+                                                </p>
+                                                <p class="card-text">
+                                                    <a href="#" class="float-right"><i class="fa fa-calendar"></i> </a>
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 {% endblock %}
