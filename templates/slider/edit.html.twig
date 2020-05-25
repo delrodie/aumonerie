@@ -1,0 +1,72 @@
+{% extends 'backoffice_layout.html.twig' %}
+
+{% block title %}{{ parent() }} Gestion des slides{% endblock %}
+
+{% block body %}
+    <div class="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Gestion des slides </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card m-b-30">
+                        <div class="card-body">
+                            <div class="row mb-5">
+                                <div class="col-8"><h4 class="mt-0 header-title">Liste des slides</h4></div>
+                                <div class="col-4"><h4 class="mt-0 header-title">Formulaire d'enregistrement</h4></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-8">
+                                    {% for label, messages in app.flashes %}
+                                        {% for message in messages %}
+                                            <div class="alert alert-{{ label }} alert-dismissible fade show d-flex align-items-center" role="alert">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                {% if label =="success" %}
+                                                    <i class="mdi mdi-checkbox-marked-circle font-32"></i>
+                                                    <strong class="pr-1">Succes !</strong>
+                                                {% else %}
+                                                    <i class="mdi mdi-close-circle font-32"></i>
+                                                    <strong class="pr-1">Erreur !</strong>
+                                                {% endif %}
+                                                {{ message }}
+                                            </div>
+                                        {% endfor %}
+                                    {% endfor %}
+
+                                    <div class="row">
+                                        {% for slide in sliders %}
+                                            <div class="col-md-4 col-xl-4">
+                                                <div class="card m-b-30">
+                                                    <img class="card-img-top img-fluid" src="{{ absolute_url(asset('uploads/sliders/' ~ slide.media)) }}" alt="{{ slide.titre }}">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title"><a href="{{ path('slider_edit', {'id': slide.id}) }}">{{ slide.titre }}</a></h5>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    {{ include('slider/_form.html.twig', {'button_label': 'Modifier'}) }}
+                                    {{ include('slider/_delete_form.html.twig') }}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

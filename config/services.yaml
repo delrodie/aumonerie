@@ -37,3 +37,4 @@ services:
             $mediaDirectory: '%kernel.project_dir%/public/uploads'
             $presentationDirectory: '%kernel.project_dir%/public/uploads/presentation'
             $actualiteDirectory: '%kernel.project_dir%/public/uploads/actualites'
+            $sliderDirectory: '%kernel.project_dir%/public/uploads/sliders'
