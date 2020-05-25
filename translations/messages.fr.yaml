@@ -1,6 +1,7 @@
 Username could not be found. : "Le nom utilisateur n'a pas été trouvé"
 Invalid credentials. : "Le mot de passe entré est invalide"
 You are logged in as : "Vous êtes connecté en tant que "
+Please sign in : "Veuillez-vous connecter"
 Logout: "deconnexion"
 Please enter a password: "Veuillez entrer votre mot de passe"
 Your password should be at least {{ limit }} characters: "Votre mot de passe doit contenir au moins {{ limit }} caractères"

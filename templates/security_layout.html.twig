@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>{% block title %}SECURITY ::{% endblock %}</title>
+    <meta content="Backoffice" name="description" />
+    <meta content="Visitezmoi, Delrodie AMOIKON" name="author" />
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ absolute_url(asset('backoffice/css/bootstrap.min.css')) }}">
+        <link rel="stylesheet" href="{{ absolute_url(asset('backoffice/plugins/animate/animate.css')) }}">
+        <link rel="stylesheet" href="{{ absolute_url(asset('backoffice/css/icons.css')) }}">
+        <link rel="stylesheet" href="{{ absolute_url(asset('backoffice/css/style.css')) }}">
+    {% endblock %}
+</head>
+<body class="fixed-left">
+<div id="stars"></div>
+<div id="stars2"></div>
+
+<div class="wrapper-page">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="text-center mt-0">
+                <img src="{{ asset('backoffice/images/logo-sm-02.png') }}" alt="" width="100">
+            </h3>
+
+            <div class="p-3">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block javascripts %}
+    <script src="{{ absolute_url(asset('backoffice/js/jquery.min.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/js/popper.min.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/js/bootstrap.min.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/js/modernizr.min.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/js/detect.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/js/fastclick.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/js/jquery.slimscroll.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/js/jquery.blockUI.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/js/waves.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/js/jquery.nicescroll.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/js/jquery.scrollTo.min.js')) }}"></script>
+
+    <script src="{{ absolute_url(asset('backoffice/js/app.js')) }}"></script>
+{% endblock %}
+</body>
+</html>
