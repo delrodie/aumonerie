@@ -1,0 +1,80 @@
+{% extends 'backoffice_layout.html.twig' %}
+
+{% block title %}{{ parent() }} Gestion des actualités{% endblock %}
+
+{% block body %}
+    <div class="page-content-wrapper dashboard">
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Gestion des actualités </h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <h4 class="mt-0 header-title">
+                                Liste des articles
+                                <div class="float-right">
+                                    <a href="{{ path('actualite_new') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Ajouter un article</a>
+                                </div>
+                            </h4>
+
+                            {% for label, messages in app.flashes %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{ label }} alert-dismissible fade show d-flex align-items-center" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        {% if label =="success" %}
+                                            <i class="mdi mdi-checkbox-marked-circle font-32"></i>
+                                            <strong class="pr-1">Succes !</strong>
+                                        {% else %}
+                                            <i class="mdi mdi-close-circle font-32"></i>
+                                            <strong class="pr-1">Erreur !</strong>
+                                        {% endif %}
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+
+                            <div class="row mt-3">
+                                {% for actualite in actualites %}
+                                    <div class="col-md-6 col-xl-4">
+                                        <div class="card m-b-30">
+                                            <img class="card-img-top img-fluid" src="{{ absolute_url(asset('uploads/actualites/' ~ actualite.media)) }}" alt="{{ actualite.titre }}">
+                                            <div class="card-body">
+                                                <h5 class="card-title"><span class="badge badge-primary">{{ actualite.dateActualite|date('d-m-Y') }}</span> <a href="{{ path('actualite_show', {'id': actualite.id}) }}">{{ actualite.titre }}</a></h5>
+                                                <p class="card-text">
+                                                    {{ actualite.contenu|striptags|slice(0,75)|raw }}...
+                                                </p>
+                                                <p class="card-text">
+                                                    <small class="text-muted">
+                                                        <span class="badge badge-info">{{ actualite.createdBy }}</span>
+                                                    </small>
+                                                    <a href="#" class="float-right"><i class="fa fa-calendar"></i> {{ actualite.createdAt ? actualite.createdAt|date('Y-m-d') : '' }}</a>
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

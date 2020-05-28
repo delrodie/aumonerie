@@ -41,6 +41,7 @@ class MonitoringController extends AbstractController
         // sinon encoder le fichier en json puis render à la vue
         if (!$fichier) return $this->render('monitoring/index.html.twig',['fichiers'=>null]);
         else{
+            krsort($fichier);
             foreach ($fichier as $item => $value){
                 $jsons[] = json_decode($value);
             }

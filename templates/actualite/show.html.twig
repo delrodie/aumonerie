@@ -1,0 +1,65 @@
+{% extends 'backoffice_layout.html.twig' %}
+
+{% block title %}{{ parent() }} Gestion de l'actualité{% endblock %}
+
+{% block body %}
+    <div class="page-content-wrapper dashboard">
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Gestion des articles de l'actualité </h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <h4 class="mt-0 mb-5 header-title">
+                                <div class="float-right">
+                                    <a href="{{ path('actualite_new') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Ajouter un article</a>
+                                    <a href="{{ path('actualite_edit',{'id': actualite.id}) }}" class="btn btn-danger"><i class="fa fa-edit"></i> Modifier</a>
+                                    <a href="{{ path('actualite_index') }}" class="btn btn-secondary"><i class="fa fa-list"></i> Liste des articles</a>
+                                </div>
+                            </h4>
+
+                            <div class="row mt-5">
+                                <div class="col-md-5 col-lg-3">
+                                    <div class="card m-b-30">
+                                        <div class="card-body">
+                                            <img src="{{ asset('uploads/actualites/' ~ actualite.media) }}" alt="" class="img-fluid  mx-auto d-block">
+
+                                            <p class="card-text mt-2">
+                                                <a href="#"><span class="badge badge-danger">{{ actualite.dateActualite|date('d-m-Y')}}</span> </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-7 col-lg-9">
+                                    <div class="card m-b-30">
+                                        <div class="card-body">
+                                            <h5 class="card-title"> <a href="{{ path('actualite_show', {'id': actualite.id}) }}">{{ actualite.titre }}</a></h5>
+                                            <p class="card-text">
+                                                {{ actualite.contenu|raw }}
+                                            </p>
+                                            {{ include('actualite/_delete_form.html.twig') }}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

@@ -5,17 +5,23 @@ namespace App\Utilities;
 
 
 use Psr\Log\LoggerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\KernelInterface;
+use Symfony\Component\Security\Core\Security;
 
 class GestionLog
 {
     private $logger;
     private $kernel;
+    private  $security;
+    private $request;
 
-    public function __construct(LoggerInterface $logger, KernelInterface $kernel)
+    public function __construct(LoggerInterface $logger, KernelInterface $kernel, Security $security, RequestStack $stack)
     {
         $this->logger = $logger;
         $this->kernel = $kernel;
+        $this->security = $security;
+        $this->request = $stack;
     }
 
     /**
@@ -24,9 +30,11 @@ class GestionLog
      * @param $ip
      * @return bool
      */
-    public function addLog($user, $rubrique, $ip)
+    public function addLog($action)
     {
-        $this->logger->info($user->getUsername().' '.$this->action($rubrique),['username'=>$user->getUsername(), 'ip'=>$ip]);
+        $username = $this->security->getUser()->getUsername();
+
+        $this->logger->info($action,['username'=>$username, 'ip'=>$this->request->getCurrentRequest()->getClientIp()]);
 
         return true;
     }

@@ -29,9 +29,15 @@ class CardinalController extends AbstractController
 
     /**
      * @Route("/", name="cardinal_index", methods={"GET"})
+     * @param CardinalRepository $cardinalRepository
+     * @return Response
      */
     public function index(CardinalRepository $cardinalRepository): Response
     {
+        // Creation du log
+        $action = $this->getUser()->getUsername()." a affiché la liste des messages du Cardinal";
+        $this->log->addLog($action);
+
         return $this->render('cardinal/index.html.twig', [
             'cardinals' => $cardinalRepository->findBy([],['id'=>"DESC"]),
         ]);
@@ -39,6 +45,9 @@ class CardinalController extends AbstractController
 
     /**
      * @Route("/new", name="cardinal_new", methods={"GET","POST"})
+     * @param Request $request
+     * @param CardinalRepository $cardinalRepository
+     * @return Response
      */
     public function new(Request $request,CardinalRepository $cardinalRepository): Response
     {
@@ -75,8 +84,16 @@ class CardinalController extends AbstractController
 
             $this->addFlash('seccess', "Le message du cardinala bien été enregistré");
 
+            // Creation du log
+            $action = $this->getUser()->getUsername()." a enregistré le message du Cardinal qui a pour theme ".$cardinal->getTheme();
+            $this->log->addLog($action);
+
             return $this->redirectToRoute('cardinal_index');
         }
+
+        // Creation du log
+        $action = $this->getUser()->getUsername()." a tenté d'enregistrer un message du Cardinal";
+        $this->log->addLog($action);
 
         return $this->render('cardinal/new.html.twig', [
             'cardinal' => $cardinal,
@@ -89,6 +106,10 @@ class CardinalController extends AbstractController
      */
     public function show(Cardinal $cardinal): Response
     {
+        // Creation du log
+        $action = $this->getUser()->getUsername()." a affiché le message du Cardinal qui a pour theme ".$cardinal->getTheme();
+        $this->log->addLog($action);
+
         return $this->render('cardinal/show.html.twig', [
             'cardinal' => $cardinal,
         ]);
@@ -121,8 +142,16 @@ class CardinalController extends AbstractController
 
             $this->addFlash('success', "Le message a bien été modifié");
 
+            // Creation du log
+            $action = $this->getUser()->getUsername()." a modifié le message du Cardinal qui a pour theme ".$cardinal->getTheme();
+            $this->log->addLog($action);
+
             return $this->redirectToRoute('cardinal_index');
         }
+
+        // Creation du log
+        $action = $this->getUser()->getUsername()." a tenté de modifier le message du Cardinal qui a pour theme ".$cardinal->getTheme();
+        $this->log->addLog($action);
 
         return $this->render('cardinal/edit.html.twig', [
             'cardinal' => $cardinal,
@@ -137,8 +166,12 @@ class CardinalController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$cardinal->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
+            $action = $this->getUser()->getUsername()." a supprimé le message du Cardinal qui a pour theme ".$cardinal->getTheme();
             $entityManager->remove($cardinal);
             $entityManager->flush();
+
+            // Creation du log
+            $this->log->addLog($action);
         }
 
         return $this->redirectToRoute('cardinal_index');

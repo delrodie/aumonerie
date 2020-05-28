@@ -1,0 +1,80 @@
+{% extends 'backoffice_layout.html.twig' %}
+
+{% block title %}{{ parent() }} Gestion des articles de Qui sommes-nous?{% endblock %}
+
+{% block body %}
+    <div class="page-content-wrapper dashboard">
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Gestion des articles de qui sommes-nous? </h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <h4 class="mt-0 header-title">
+                                Liste des articles
+                                <div class="float-right">
+                                    <a href="{{ path('presentation_new') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Ajouter un articles</a>
+                                </div>
+                            </h4>
+
+                            {% for label, messages in app.flashes %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{ label }} alert-dismissible fade show d-flex align-items-center" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        {% if label =="success" %}
+                                            <i class="mdi mdi-checkbox-marked-circle font-32"></i>
+                                            <strong class="pr-1">Succes !</strong>
+                                        {% else %}
+                                            <i class="mdi mdi-close-circle font-32"></i>
+                                            <strong class="pr-1">Erreur !</strong>
+                                        {% endif %}
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+
+                            <div class="row mt-3">
+                                {% for presentation in presentations %}
+                                    <div class="col-md-6 col-xl-4">
+                                        <div class="card m-b-30">
+                                            <img class="card-img-top img-fluid" src="{{ absolute_url(asset('uploads/presentation/' ~ presentation.photo)) }}" alt="{{ presentation.titre }}">
+                                            <div class="card-body">
+                                                <h5 class="card-title"><span class="badge badge-primary">{{ presentation.rubrique }}</span> <a href="{{ path('presentation_show', {'id': presentation.id}) }}">{{ presentation.titre }}</a></h5>
+                                                <p class="card-text">
+                                                    {{ presentation.contenu|striptags|slice(0,75)|raw }}...
+                                                </p>
+                                                <p class="card-text">
+                                                    <small class="text-muted">
+                                                        <span class="badge badge-info">{{ presentation.createdBy }}</span>
+                                                    </small>
+                                                    <a href="#" class="float-right"><i class="fa fa-calendar"></i> {{ presentation.createdAt ? presentation.createdAt|date('Y-m-d') : '' }}</a>
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}
