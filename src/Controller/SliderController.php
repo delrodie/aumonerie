@@ -105,17 +105,21 @@ class SliderController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            // Gestion des fichiers
+            // Si le media a changé alors enregistrer le nouveau et supprimer l'ancien
+            $ancienMedia = $request->get('ancien_media');
             $mediaFile = $form->get('media')->getData();
 
             // Traitement du fichier s'il a été telechargé
             if ($mediaFile){
                 $media = $this->gestionMedia->upload($mediaFile, 'media');
 
+                // supression
+                $this->gestionMedia->removeUpload($ancienMedia,'media');
+
                 $slider->setMedia($media);
             }
 
+            
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', "La modification du slide a été effectué avec succès!");

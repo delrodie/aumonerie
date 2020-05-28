@@ -23,6 +23,13 @@ class GestionMedia
         $this->mediaSlide = $sliderDirectory;
     }
 
+    /**
+     * Enregistrement du fichier dans le repertoire approprié
+     *
+     * @param UploadedFile $file
+     * @param null $media
+     * @return string
+     */
     public function upload(UploadedFile $file, $media = null)
     {
         $slugify = new Slugify();
@@ -43,5 +50,15 @@ class GestionMedia
 
         return $newFilename;
 
+    }
+
+    public function removeUpload($ancienMedia, $media = null)
+    {
+        if ($media === 'photo') unlink($this->mediaPresentation.'/'.$ancienMedia);
+        elseif ($media === 'media') unlink($this->mediaSlide.'/'.$ancienMedia);
+        elseif ($media === 'actualite') unlink($this->mediaActualite.'/'.$ancienMedia);
+        else return false;
+
+        return true;
     }
 }
