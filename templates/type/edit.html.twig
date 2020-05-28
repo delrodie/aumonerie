@@ -1,0 +1,69 @@
+{% extends 'backoffice_layout.html.twig' %}
+
+{% block title %}{{ parent() }} Gestion des types {% endblock %}
+
+{% block body %}
+    <div class="page-content-wrapper dashboard">
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Gestion des Types </h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-xl-8">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <h4 class="mt-0 header-title">Liste des types</h4>
+
+                            <table class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center">TYPES</th>
+                                    <th class="text-center">ACTIONS</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for type in types %}
+                                    <tr>
+                                        <td class="text-right mr-3">{{ loop.index }}</td>
+                                        <td>{{ type.libelle }}</td>
+                                        <td class="text-center">
+                                            <a href="{{ path('type_edit', {'id': type.id}) }}"><i class="fa fa-edit"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xl-4">
+                    <div class="card m-b-30">
+                        <div class="card-body">
+
+                            <h4 class="mt-0 header-title">Enregistrerment</h4>
+
+                            {{ include('type/_form.html.twig', {'button_label': 'Modifier'}) }}
+                            {{ include('type/_delete_form.html.twig') }}
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}
+
+
