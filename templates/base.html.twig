@@ -44,13 +44,7 @@
                                 Qui sommes-nous?
                             </a>
                             <div class="dropdown-menu sm-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="page.html">Présentation</a>
-                                <a class="dropdown-item" href="statuts.html">Statuts & reglement interieur</a>
-                                <a class="dropdown-item" href="aumonier.html">Aumônerie Militaire Catholique</a>
-                                <a class="dropdown-item" href="aumonier.html">L'aumônier</a>
-                                <a class="dropdown-item" href="aumonier.html">Mission</a>
-                                <a class="dropdown-item" href="president.html">Le conseil pastoral militaire</a>
-                                <a class="dropdown-item" href="#">Les départements</a>
+                                {{ render(url('app_menu')) }}
                             </div>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="#">Actualités</a></li>
@@ -202,7 +196,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="backoffice-text text-right">
-                                <a href="{{ path('cardinal_index') }}" target="_blank">Backoffice</a>
+                                <a href="{{ path('app_dashboard') }}" target="_blank">Backoffice</a>
                             </div>
                         </div>
                     </div>

@@ -1,0 +1,617 @@
+{% extends 'backoffice_layout.html.twig' %}
+
+{% block title %}{{ parent() }} Tableau de bord{% endblock %}
+
+{% block body %}
+    <div class="page-content-wrapper dashboard">
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Tableau de bord</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-xl-3">
+                    <div class="card m-b-30">
+                        <div class="card-body ">
+                            <div class="d-flex row">
+                                <div class="col-3 align-self-center">
+                                    <div class="round">
+                                        <i class="mdi mdi-account-multiple-plus text-light"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6 ml-auto align-self-center text-center">
+                                    <div class="m-l-10 text-white-50 float-right">
+                                        <h5 class="mt-0 round-inner">15321</h5>
+                                        <p class="mb-0 ">Categorie</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-xl-3">
+                    <div class="card m-b-30">
+                        <div class="card-body ">
+                            <div class="d-flex row">
+                                <div class="col-3 align-self-center">
+                                    <div class="round">
+                                        <i class="mdi mdi-google-physical-web text-primary"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6 ml-auto align-self-center text-center">
+                                    <div class="m-l-10 text-white-50 float-right">
+                                        <h5 class="mt-0 round-inner">822</h5>
+                                        <p class="mb-0 ">Fournisseurs</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-xl-3">
+                    <div class="card m-b-30">
+                        <div class="card-body ">
+                            <div class="d-flex row">
+                                <div class="col-3 align-self-center">
+                                    <div class="round">
+                                        <i class="mdi mdi-basket text-light"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6 ml-auto align-self-center text-center">
+                                    <div class="m-l-10 text-white-50 float-right">
+                                        <h5 class="mt-0 round-inner">6487</h5>
+                                        <p class="mb-0 ">Fournisseurs</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xl-3">
+                    <div class="card m-b-30">
+                        <div class="card-body ">
+                            <div class="d-flex row">
+                                <div class="col-3 align-self-center">
+                                    <div class="round">
+                                        <i class="mdi mdi-calculator text-primary"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6 ml-auto align-self-center text-center">
+                                    <div class="m-l-10 text-white-50 float-right">
+                                        <h5 class="mt-0 round-inner">235</h5>
+                                        <p class="mb-0 ">Clients</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end row -->
+
+            <div class="row">
+                <div class="col-md-12 col-xl-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mt-0 header-title">Line chart with area</h4>
+                            <p class="text-muted  font-14 d-inline-block text-truncate w-100">This chart uses the showArea option to
+                                draw line, dots but also an area shape. Use the low option to specify a
+                                fixed lower bound that will make the area expand.
+                            </p>
+                            <div id="chart-with-area" class="ct-chart ct-golden-section"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xl-4">
+                    <div class="card m-b-30">
+                        <div class="card-body">
+                            <h6>Popular Products <span class="font-12 ml-2 float-right">01 June, 2018 - 30 June, 2018</span></h6>
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active col-auto">
+                                        <div class="my-2">
+                                            <img class="w-200 d-block mx-auto img-fluid" src="assets/images/products/football.png" alt="camera-1">
+                                        </div>
+                                        <div class="text-center">
+                                            <h6 class="">Aplomb Premiere League Football (size-2)</h6>
+                                            <ul class="list-unstyled list-inline">
+                                                <li class="list-inline-item">
+                                                    <i class="mdi mdi-star text-warning"></i>
+                                                    <i class="mdi mdi-star text-warning"></i>
+                                                    <i class="mdi mdi-star text-warning"></i>
+                                                    <i class="mdi mdi-star text-warning"></i>
+                                                    <i class="mdi mdi-star-half text-warning"></i>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <small>2505 Customers Reviews</small>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <small class="text-muted">Product ID: #PD-1024</small>
+                                                </li>
+                                            </ul>
+
+                                            <div class="row text-center mt-3">
+                                                <div class="col-6 border-right">
+                                                    <h3 class="text-white">3980</h3>
+                                                    <small class="text-muted">Total Seles</small>
+                                                </div>
+                                                <div class="col-6">
+                                                    <h3 class="text-white">$ 10,980</h3>
+                                                    <small class="text-muted">Total Earnings</small>
+                                                </div>
+                                                <div class="col-12 text-center mt-3">
+                                                    <a href="#" class="btn btn-outline-light  btn-sm px-3">More Products</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item col-auto">
+                                        <div class="my-2">
+                                            <img class="w-200 d-block mx-auto img-fluid" src="assets/images/products/shoes.png" alt="shoes-2">
+                                        </div>
+                                        <div class="text-center">
+                                            <h6 class="">Aplomb Men's Grey Running Shoes (0A1)</h6>
+                                            <ul class="list-unstyled list-inline">
+                                                <li class="list-inline-item">
+                                                    <i class="mdi mdi-star text-warning"></i>
+                                                    <i class="mdi mdi-star text-warning"></i>
+                                                    <i class="mdi mdi-star text-warning"></i>
+                                                    <i class="mdi mdi-star text-warning"></i>
+                                                    <i class="mdi mdi-star-half text-warning"></i>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <small>2305 Customers Reviews</small>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <small class="text-muted">Product ID: #PD-3580</small>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="row text-center mt-3">
+                                            <div class="col-6 border-right">
+                                                <h3 class="text-white">4980</h3>
+                                                <small class="text-muted">Total Seles</small>
+                                            </div>
+                                            <div class="col-6">
+                                                <h3 class="text-white">$ 14,980</h3>
+                                                <small class="text-muted">Total Earnings</small>
+                                            </div>
+                                            <div class="col-12 text-center mt-3">
+                                                <a href="#" class="btn btn-outline-light btn-sm px-3">More Detail</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- end row-->
+
+            <div class="row">
+                <div class="col-md-12 col-xl-9">
+                    <div class="card">
+                        <div class="card-body table-data">
+                            <h6 class="d-inline-block">Overview</h6>
+                            <div class="float-right ml-2">
+                                <div class="dropdown">
+                                    <a class="btn btn-outline-light btn-sm" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="mdi mdi-menu"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">Today</a>
+                                        <a class="dropdown-item" href="#">This Week</a>
+                                        <a class="dropdown-item" href="#">This Month</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="nav nav-pills mb-3 float-right" id="pills-tab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="user-history-tab" data-toggle="pill" href="#user-history" role="tab" aria-selected="true">New Customers</a>
+                                </li>
+                                <li class="nav-item ml-2">
+                                    <a class="nav-link" id="product-sale-tab" data-toggle="pill" href="#product-sale" role="tab" aria-selected="false">Product Sold</a>
+                                </li>
+                            </ul>
+
+                            <div class="boxscroll w-100">
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="user-history" role="tabpanel" >
+                                        <div class="table-responsive user-history">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th class="border-top-0 w-60">Customers</th>
+                                                    <th class="border-top-0">Name</th>
+                                                    <th class="border-top-0">Product</th>
+                                                    <th class="border-top-0">Order Date/Time</th>
+                                                    <th class="border-top-0">Country</th>
+                                                    <th class="border-top-0">Order #</th>
+                                                    <th class="border-top-0">Status</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <img class="rounded-circle" src="assets/images/users/avatar-1.jpg" alt="user" width="40">
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="text-white-50">James k. Striplin</a>
+                                                    </td>
+                                                    <td>
+                                                        <img class="rounded-circle" src="assets/images/products/football.png" alt="user" width="40">
+                                                    </td>
+
+                                                    <td>18/05/2018 3:01 PM</td>
+                                                    <td>
+                                                        <img src="assets/images/flags/us_flag.jpg" alt="" class="w-30">
+                                                    </td>
+                                                    <td>9932AZ</td>
+                                                    <td><span class="badge badge-boxed  badge-primary">Shipped</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img class="rounded-circle w-50" src="assets/images/users/avatar-2.jpg" alt="user"> </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="text-white-50">William A. Johnson</a>
+                                                    </td>
+                                                    <td>
+                                                        <img class="rounded-circle" src="assets/images/products/purse.png" alt="user" width="40">
+                                                    </td>
+                                                    <td>28/05/2018 9:20 AM</td>
+                                                    <td>
+                                                        <img src="assets/images/flags/french_flag.jpg" alt="" class="w-30">
+                                                    </td>
+                                                    <td>2643BZ</td>
+                                                    <td><span class="badge badge-boxed  badge-danger">Delivered</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img class="rounded-circle w-50" src="assets/images/users/avatar-3.jpg" alt="user"> </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="text-white-50">Bobby M. Gray</a>
+                                                    </td>
+                                                    <td>
+                                                        <img class="rounded-circle" src="assets/images/products/shoes.png" alt="user" width="40">
+                                                    </td>
+                                                    <td>3/05/2018 8:45 PM</td>
+                                                    <td>
+                                                        <img src="assets/images/flags/spain_flag.jpg" alt="" class="w-30">
+                                                    </td>
+                                                    <td>2458DA</td>
+                                                    <td><span class="badge badge-boxed badge-warning">Pending</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img class="rounded-circle w-50" src="assets/images/users/avatar-4.jpg" alt="user"> </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="text-white-50">Sona J. Medrano</a>
+                                                    </td>
+                                                    <td>
+                                                        <img class="rounded-circle" src="assets/images/products/apple.png" alt="user" width="40">
+                                                    </td>
+                                                    <td>25/05/2018 6:35 PM</td>
+                                                    <td>
+                                                        <img src="assets/images/flags/russia_flag.jpg" alt="" class="w-30">
+                                                    </td>
+                                                    <td>7845AA</td>
+                                                    <td><span class="badge badge-boxed  badge-primary">Shipped</span> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img class="rounded-circle w-50" src="assets/images/users/avatar-5.jpg" alt="user" >
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="text-white-50">Ruby T. Curd</a>
+                                                    </td>
+                                                    <td>
+                                                        <img class="rounded-circle" src="assets/images/products/v-ball.png" alt="user" width="40">
+                                                    </td>
+                                                    <td>12/05/2018 10:42 AM</td>
+                                                    <td>
+                                                        <img src="assets/images/flags/italy_flag.jpg" alt="" class="w-30">
+                                                    </td>
+                                                    <td>4451CA</td>
+                                                    <td><span class="badge badge-boxed badge-warning">Pending</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img class="rounded-circle" src="assets/images/users/avatar-6.jpg" alt="user" width="40">
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="text-white-50">James k    . Striplin</a>
+                                                    </td>
+                                                    <td>
+                                                        <img class="rounded-circle" src="assets/images/products/football.png" alt="user" width="40">
+                                                    </td>
+
+                                                    <td>18/05/2018 3:01 PM</td>
+                                                    <td>
+                                                        <img src="assets/images/flags/us_flag.jpg" alt="" class="w-30">
+                                                    </td>
+                                                    <td>9932AZ</td>
+                                                    <td><span class="badge badge-boxed  badge-primary">Shipped</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img class="rounded-circle w-50" src="assets/images/users/avatar-7.jpg" alt="user"> </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="text-white-50">William A. Johnson</a>
+                                                    </td>
+                                                    <td>
+                                                        <img class="rounded-circle" src="assets/images/products/purse.png" alt="user" width="40">
+                                                    </td>
+                                                    <td>28/05/2018 9:20 AM</td>
+                                                    <td>
+                                                        <img src="assets/images/flags/french_flag.jpg" alt="" class="w-30">
+                                                    </td>
+                                                    <td>2643BZ</td>
+                                                    <td><span class="badge badge-boxed  badge-danger">Delivered</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img class="rounded-circle w-50" src="assets/images/users/avatar-8.jpg" alt="user"> </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="text-white-50">Bobby M. Gray</a>
+                                                    </td>
+                                                    <td>
+                                                        <img class="rounded-circle" src="assets/images/products/shoes.png" alt="user" width="40">
+                                                    </td>
+                                                    <td>3/05/2018 8:45 PM</td>
+                                                    <td>
+                                                        <img src="assets/images/flags/spain_flag.jpg" alt="" class="w-30">
+                                                    </td>
+                                                    <td>2458DA</td>
+                                                    <td><span class="badge badge-boxed badge-warning">Pending</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img class="rounded-circle w-50" src="assets/images/users/avatar-9.jpg" alt="user"> </td>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="text-white-50">Sona J. Medrano</a>
+                                                    </td>
+                                                    <td>
+                                                        <img class="rounded-circle" src="assets/images/products/apple.png" alt="user" width="40">
+                                                    </td>
+                                                    <td>25/05/2018 6:35 PM</td>
+                                                    <td>
+                                                        <img src="assets/images/flags/russia_flag.jpg" alt="" class="w-30">
+                                                    </td>
+                                                    <td>7845AA</td>
+                                                    <td><span class="badge badge-boxed  badge-primary">Shipped</span> </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="">
+                                                <a href="#" class="text-primary">
+                                                    <i class="mdi mdi-chevron-down"></i> View All History
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="product-sale" role="tabpanel" >
+                                        <div class="table-responsive user-history">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th class="border-top-0 w-60">Product</th>
+                                                    <th class="border-top-0">Product Name</th>
+                                                    <th class="border-top-0">Revenue</th>
+                                                    <th class="border-top-0">Sold</th>
+                                                    <th class="border-top-0">Discount</th>
+                                                    <th class="border-top-0">Actions</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <img class="rounded-circle" src="assets/images/products/football.png" alt="user" width="40"> </td>
+                                                    <td>
+                                                        <p  class="text-white-50 mb-0">Aplomb Football (size-2)</p>
+                                                    </td>
+                                                    <td>
+                                                        $500
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>$10.00</td>
+                                                    <td>
+                                                        <span class="linechart-2"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img class="rounded-circle" src="assets/images/products/purse.png" alt="user" width="40"> </td>
+                                                    <td>
+                                                        <p  class="text-white-50 mb-0">Aplomb Purse A-1</p>
+                                                    </td>
+                                                    <td>
+                                                        $400
+                                                    </td>
+                                                    <td>2</td>
+                                                    <td>$5.00</td>
+                                                    <td>
+                                                        <span class="linechart"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img class="rounded-circle" src="assets/images/products/shoes.png" alt="user" width="40"> </td>
+                                                    <td>
+                                                        <p  class="text-white-50 mb-0">Aplomb shoes L-9</p>
+                                                    </td>
+                                                    <td>
+                                                        $300
+                                                    </td>
+                                                    <td>1</td>
+                                                    <td>$10.00</td>
+                                                    <td>
+                                                        <span class="linechart-3"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img class="rounded-circle" src="assets/images/products/apple.png" alt="user" width="40"> </td>
+                                                    <td>
+                                                        <p  class="text-white-50 mb-0">Aplomb Iphone</p>
+                                                    </td>
+                                                    <td>
+                                                        $200
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>$5.00</td>
+                                                    <td>
+                                                        <span class="linechart-2"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img class="rounded-circle" src="assets/images/products/v-ball.png" alt="user" width="40">
+                                                    </td>
+                                                    <td>
+                                                        <p  class="text-white-50 mb-0">Aplomb volleyball</p>
+                                                    </td>
+                                                    <td>
+                                                        $100
+                                                    </td>
+                                                    <td>2</td>
+                                                    <td>$10.00</td>
+                                                    <td>
+                                                        <span class="linechart"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img class="rounded-circle" src="assets/images/products/football.png" alt="user" width="40"> </td>
+                                                    <td>
+                                                        <p  class="text-white-50 mb-0">Aplomb Football (size-2)</p>
+                                                    </td>
+                                                    <td>
+                                                        $500
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>$10.00</td>
+                                                    <td>
+                                                        <span class="linechart-2"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img class="rounded-circle" src="assets/images/products/purse.png" alt="user" width="40"> </td>
+                                                    <td>
+                                                        <p  class="text-white-50 mb-0">Aplomb Purse A-1</p>
+                                                    </td>
+                                                    <td>
+                                                        $400
+                                                    </td>
+                                                    <td>2</td>
+                                                    <td>$5.00</td>
+                                                    <td>
+                                                        <span class="linechart"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img class="rounded-circle" src="assets/images/products/shoes.png" alt="user" width="40"> </td>
+                                                    <td>
+                                                        <p  class="text-white-50 mb-0">Aplomb shoes L-9</p>
+                                                    </td>
+                                                    <td>
+                                                        $300
+                                                    </td>
+                                                    <td>1</td>
+                                                    <td>$10.00</td>
+                                                    <td>
+                                                        <span class="linechart-3"></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img class="rounded-circle" src="assets/images/products/apple.png" alt="user" width="40"> </td>
+                                                    <td>
+                                                        <p  class="text-white-50 mb-0">Aplomb Iphone</p>
+                                                    </td>
+                                                    <td>
+                                                        $200
+                                                    </td>
+                                                    <td>3</td>
+                                                    <td>$5.00</td>
+                                                    <td>
+                                                        <span class="linechart-2"></span>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="">
+                                                <a href="#" class="text-primary">
+                                                    <i class="mdi mdi-chevron-down"></i> View All History
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xl-3">
+                    <div class="card m-b-30">
+                        <div class="card-body">
+                            <h6 class="mb-3">Activities</h6>
+                            <div class="timeline-2">
+                                <div class="time-item">
+                                    <div class="item-info">
+                                        <div class="text-muted font-14">5 minutes ago</div>
+                                        <p class="mb-0 text-primary"><b>Event title here..!</b></p>
+                                        <p class="text-muted font-14">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    </div>
+                                </div>
+                                <div class="time-item mt-3">
+                                    <div class="item-info">
+                                        <div class="text-muted font-14">30 minutes ago</div>
+                                        <p class="mb-0 text-primary"><b>Our new product..</b></p>
+                                        <img src="assets/images/products/purse.png" alt="" class="w-25 img-fluid">
+                                        <img src="assets/images/products/shoes.png" alt="" class="w-25 img-fluid">
+                                    </div>
+                                </div>
+                                <div class="time-item  mt-3">
+                                    <div class="item-info">
+                                        <div class="text-muted font-14">50 minutes ago</div>
+                                        <p class="mb-0 text-primary"><b>The shipment has been delivered.</b></p>
+                                        <p class="text-muted font-14">Lorem ipsum dolor sit amet.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ absolute_url(asset('backoffice/plugins/chartist/css/chartist.min.css')) }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ absolute_url(asset('backoffice/plugins/chart.js/chart.min.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/plugins/chartist/js/chartist-plugin-tooltip.min.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/pages/chartist.init.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/pages/dashborad.js')) }}"></script>
+{% endblock %}
