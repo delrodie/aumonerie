@@ -42,7 +42,7 @@
                             {{ cardinal.message|striptags|raw|slice(0,380) }}...
                         </p>
                         <div class="btn-lire-suite">
-                            <a href="#" class="btn">Lire la suite</a>
+                            <a href="{{ path('forntend_cardinal_show', {'slug': cardinal.slug}) }}" class="btn">Lire la suite</a>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
@@ -103,7 +103,7 @@
                                     </div>
                                     <div class="article-contenu">
                                         <ul class="date-publication">
-                                            <li><i class="fa fa-calendar-day"></i> {{ actualite.createdAt|date('d M Y') }}</li>
+                                            <li><i class="fa fa-calendar-day"></i> {{ actualite.createdAt|date('d M Y')|format_date(locale='fr') }}</li>
                                         </ul>
                                         <h3 class="titre">{{ actualite.titre}}</h3>
                                         <p class="resume">

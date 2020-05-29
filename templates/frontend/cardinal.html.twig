@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ cardinal.titre }}{% endblock %}
+
+{% block body %}
+    <div class="container" style="margin-bottom: 150px;">
+        <div class="row">
+            <div class="col-12">
+                <ul class="ariane">
+                    <li class="ariane-item"><a href="{{ path('app_accueil') }}"><i class="fa fa-home"></i></a></li>&raquo;
+                    <li class="ariane-item">Cardinal</li>&raquo;
+                    <li class="ariane-item active">{{ cardinal.annee }}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 page-secondaire">
+                <h4 class="barre-orange"><div class="point"></div>Qui sommes-nous?</h4>
+                <img src="{{ absolute_url(asset('uploads/presentation/'~ cardinal.photo)) }}" alt="{{ cardinal.theme }}" class="img-fluid img-thumbnail img-cardinal">
+                <h2>{{ cardinal.titre }}</h2>
+                <p>
+                    {{cardinal.message|raw}}
+                </p>
+            </div>
+            <div class="col-md-4">
+                <div id="fb-root"></div>
+                <div class="fb-page" data-href="https://www.facebook.com/aumonerieabidjan/" data-tabs="timeline,events,messages" data-width="" data-height="1000" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/aumonerieabidjan/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/aumonerieabidjan/">Aumônerie Militaire Catholique Diocèse Abidjan</a></blockquote></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v7.0"></script>
+{% endblock %}
