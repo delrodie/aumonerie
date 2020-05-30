@@ -70,7 +70,7 @@
                                 {{ vision.contenu|striptags|raw|slice(0,390) }}...
                             </p>
                             <div class="btn-lire-suite">
-                                <a href="#" class="btn">Voir la présentation</a>
+                                <a href="{{ path('frontend_presentation_show', {'slug': vision.slug}) }}" class="btn">Voir la présentation</a>
                             </div>
                         {% endif %}
                     </div>

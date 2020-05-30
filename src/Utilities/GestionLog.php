@@ -32,7 +32,13 @@ class GestionLog
      */
     public function addLog($action)
     {
-        $username = $this->security->getUser()->getUsername();
+        // Si connecté alors affiché utilisateur
+        // sinon affiché anonyme
+        if ($this->security->getUser()){
+            $username = $this->security->getUser()->getUsername();
+        }else{
+            $username = "Anonyme";
+        }
 
         $this->logger->info($action,['username'=>$username, 'ip'=>$this->request->getCurrentRequest()->getClientIp()]);
 

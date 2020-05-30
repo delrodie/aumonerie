@@ -38,6 +38,10 @@ class FrCardinalController extends AbstractController
             return $this->cardinalRepository->findOneBy(['slug'=>$cardinal->getSlug()]);
         });
 
+        // Creation du log
+        $action = " a consulté le message du cardinal";
+        $this->log->addLog($action);
+
         return $this->render("frontend/cardinal.html.twig",[
             'cardinal' => $resultat,
         ]);
