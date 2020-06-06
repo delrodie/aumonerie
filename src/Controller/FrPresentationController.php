@@ -16,7 +16,7 @@ use Symfony\Contracts\Cache\ItemInterface;
  * Class frPresentationController
  * @Route("/qui-sommes-nous")
  */
-class frPresentationController extends AbstractController
+class FrPresentationController extends AbstractController
 {
     private $log;
     private $cache;
@@ -27,6 +27,14 @@ class frPresentationController extends AbstractController
         $this->log = $log;
         $this->cache = $cache;
         $this->presentationRepository = $presentationRepository;
+    }
+
+    /**
+     * @Route("/les-departements", name="frontend_presentation_departements")
+     */
+    public function departements()
+    {
+        return $this->render("frontend/departements.html.twig");
     }
 
     /**

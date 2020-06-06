@@ -18,7 +18,7 @@ class ActualiteType extends AbstractType
         $builder
             ->add('titre', TextType::class,['attr'=>['class'=>'form-control', 'autocomplete'=>"off"]])
             ->add('contenu', TextareaType::class,['attr'=>['class'=>'form-control summernote', 'rows'=>5]])
-            ->add('dateActualite', TextType::class,['attr'=>['class'=>'form-control datepicker', 'autocomplte'=>"off"]])
+            ->add('dateActualite', TextType::class,['attr'=>['class'=>'form-control datepicker', 'autocomplete'=>"off"]])
             ->add('media', FileType::class,[
                 'mapped'=>false,
                 'required' =>false,

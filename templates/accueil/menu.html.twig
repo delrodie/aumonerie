@@ -1,3 +1,4 @@
 {% for presentation in presentations %}
     <a class="dropdown-item" href="{{ path('frontend_presentation_show', {'slug': presentation.slug}) }}">{{presentation.rubrique}}</a>
 {% endfor %}
+    <a class="dropdown-item" href="{{ path('frontend_presentation_departements') }}">Les départements</a>

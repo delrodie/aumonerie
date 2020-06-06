@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ actualite.titre }}{% endblock %}
+
+{% block body %}
+    <div class="container" style="margin-bottom: 150px;">
+        <div class="row">
+            <div class="col-12">
+                <ul class="ariane">
+                    <li class="ariane-item"><a href="{{ path('app_accueil') }}"><i class="fa fa-home"></i></a></li>&raquo;
+                    <li class="ariane-item">Actualités</li>&raquo;
+                    <li class="ariane-item active">{{ actualite.titre }}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 page-secondaire">
+                <h4 class="barre-orange"><div class="point"></div>Actualités</h4>
+                <div class="row">
+                    <div class="col-12">
+                        <img src="{{ absolute_url(asset('uploads/actualites/'~ actualite.media)) }}" alt="{{ actualite.titre }}" class="img-fluid img-thumbnail mt-5">
+                        <h2>{{ actualite.titre }}</h2>
+                        <p>
+                            {{actualite.contenu|raw}}
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div id="fb-root"></div>
+                <div class="fb-page" data-href="https://www.facebook.com/aumonerieabidjan/" data-tabs="timeline,events,messages" data-width="" data-height="1000" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/aumonerieabidjan/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/aumonerieabidjan/">Aumônerie Militaire Catholique Diocèse Abidjan</a></blockquote></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v7.0"></script>
+{% endblock %}

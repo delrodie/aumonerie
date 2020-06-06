@@ -66,6 +66,12 @@
       margin-top: 10px;
     }
   }
+
+  .organigramme{
+    a{
+      font-size: 8px;
+    }
+  }
 }
 
 @media screen and (min-width: 769px) {
@@ -80,4 +86,12 @@
     }
   }
 
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1440px){
+  .organigramme{
+    a{
+      font-size: 8px;
+    }
+  }
 }

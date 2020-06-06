@@ -52,6 +52,13 @@ class GestionMedia
 
     }
 
+    /**
+     * Suppression de l'ancien media sur le server
+     *
+     * @param $ancienMedia
+     * @param null $media
+     * @return bool
+     */
     public function removeUpload($ancienMedia, $media = null)
     {
         if ($media === 'photo') unlink($this->mediaPresentation.'/'.$ancienMedia);

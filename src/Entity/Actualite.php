@@ -37,11 +37,6 @@ class Actualite
      */
     private $createdAt;
 
-    public function __construct()
-    {
-        $this->createdAt = new \DateTime();
-    }
-
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -56,6 +51,11 @@ class Actualite
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $slug;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
 
     public function getId(): ?int
     {

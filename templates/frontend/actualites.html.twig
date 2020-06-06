@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block title %} Les actualites {% endblock %}
+{% block body %}
+    <div class="container" style="margin-bottom: 150px;">
+        <div class="row">
+            <div class="col-12">
+                <ul class="ariane">
+                    <li class="ariane-item"><a href="{{ path('app_accueil') }}"><i class="fa fa-home"></i></a></li>&raquo;
+                    <li class="ariane-item active">Actualités</li>&raquo;
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 page-secondaire actualites-list">
+                <h4 class="barre-orange"><div class="point"></div>Actualités</h4>
+                {% for actualite in actualites %}
+                    <div class="card mb-3 w-100">
+                        <div class="row no-gutters">
+                            <div class="col-md-4 justify-content-between">
+                                <img src="{{ absolute_url(asset('uploads/actualites/'~ actualite.media)) }}" class="card-img img-fluid" alt="{{ actualite.titre }}">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a href="{{ path('frontend_actualite_show', {'slug': actualite.slug}) }}">
+                                            {{ actualite.titre }}
+                                        </a>
+                                    </h5>
+                                    <p class="card-text">
+                                        {{ actualite.contenu|striptags|raw|slice(0,100) }}...
+                                    </p>
+                                    <p class="card-text"><small class="text-muted">{{ actualite.createdAt|date('d M Y')|format_date(locale='fr') }}</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                <div class="row mt-5">
+                    <div class="col-12 text-center">
+                        {{ knp_pagination_render(actualites) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="fb-root"></div>
+                <div class="fb-page" data-href="https://www.facebook.com/aumonerieabidjan/" data-tabs="timeline,events,messages" data-width="" data-height="1000" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/aumonerieabidjan/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/aumonerieabidjan/">Aumônerie Militaire Catholique Diocèse Abidjan</a></blockquote></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v7.0"></script>
+{% endblock %}

@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/actualite")
+ * @Route("/backend/actualite")
  */
 class ActualiteController extends AbstractController
 {

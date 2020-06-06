@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block title %}Organigrammes de l'Aumnerie Militaire Catholique du Diocèse d'Abidjan{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ul class="ariane">
+                    <li class="ariane-item"><a href="{{ path('app_accueil') }}"><i class="fa fa-home"></i></a></li>&raquo;
+                    <li class="ariane-item">Qui sommes-nous?</li>&raquo;
+                    <li class="ariane-item active">Les departements</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 page-secondaire">
+                <h4 class="barre-orange"><div class="point"></div>Organigramme de l'Aumonerie Militaire Catholique du Diocese d'Abidjan</h4>
+
+            </div>
+        </div>
+    </div>
+    <div class="organigramme text-center mt-5 mb-5" style="margin-bottom: 150px;">
+        <ul>
+            <li>
+                <a href="#" class="description">PRESIDENCE
+                    <span>
+                        <div>- Aumonier</div>
+                        <div>- Vice-Président</div>
+                        <div>- Conseillers</div>
+                    </span>
+                </a>
+                <ul>
+                    <li><a href="#">DEPARTEMENT FINANCE ET COMPTABILITE</a></li>
+                    <li><a href="#">DEPARTEMENT COMMUNICATION</a></li>
+                    <li>
+                        <a href="#">DEPARTEMENT ORGANISATION</a>
+                        <ul>
+                            <li><a href="#">SERVICE OPERATIONNEL</a></li>
+                            <li><a href="#">SERVICE LITURGIQUE</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">DEPARTEMENT DES AFFAIRES SOCIALES ET CULTURELLES</a></li>
+                    <li><a href="#">DEPARTEMENT ADMINISTRATION</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="container" style="margin-bottom: 300px;">
+        <div class="row"></div>
+    </div>
+{% endblock %}

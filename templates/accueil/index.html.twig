@@ -92,7 +92,7 @@
                         Actualités
                     </h4>
                     <div class="row">
-                        {% for actualite in actualites %}
+                        {% for actualite in actualites|slice(0,2) %}
                             <div class="col-12 col-md-6 col-lg-6">
                                 <div class="actualites">
                                     <div class="article-img">
@@ -110,7 +110,7 @@
                                             {{ actualite.contenu|striptags|raw|slice(0,250) }}...
                                         </p>
                                         <div class="btn-lire-suite">
-                                            <a href="#" class="btn">Lire la suite <i class="fa fa-angle-right"></i></a>
+                                            <a href="{{ path('frontend_actualite_show', {'slug': actualite.slug}) }}" class="btn">Lire la suite <i class="fa fa-angle-right"></i></a>
                                         </div>
                                     </div>
                                 </div>

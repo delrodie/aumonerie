@@ -69,4 +69,45 @@ ul.ariane{
     margin-left: 20px;
     width: 300px;
   }
+
+  &.actualites-list{
+    & h5.card-title{
+      margin-bottom: 0;
+      padding-bottom: 0;
+
+      a{
+        text-decoration: none;
+        color: var(--couleur-verte);
+        &:hover{
+          color: var(--couleur-orange);
+        }
+      }
+    }
+
+    & p.card-text{
+      margin-top: 0;
+      padding-top: .75rem;
+    }
+
+    & .card{
+      &:hover{
+        border-bottom: solid 3px #CCCCCC;
+        border-right: solid 2px #CCCCCC;
+        cursor: pointer;
+      }
+    }
+
+    & .pagination{
+      & .page-item{
+        & a.page-link{
+          color: var(--couleur-verte);
+        }
+        &.active{
+          & span.page-link{
+            background-color: var(--couleur-verte);
+          }
+        }
+      }
+    }
+  }
 }

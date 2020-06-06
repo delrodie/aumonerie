@@ -28,7 +28,7 @@
         </div>
         <nav class="navbar sticky-top navbar-expand-lg navbar-light">
             <div class="container">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{ absolute_url(path('app_accueil')) }}">
                     <img src="{{ absolute_url(asset('assets/images/logo-sm-02.png')) }}" alt="Logo aumonerie" width="75">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile_nav" aria-controls="mobile_nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +47,7 @@
                                 {{ render(url('app_menu')) }}
                             </div>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="#">Actualités</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ absolute_url(path('frontend_actualite_index')) }}">Actualités</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Programmes</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Fraterntés</a></li>
                         <li class="nav-item menu dropdown">
@@ -207,6 +207,7 @@
             <script src="{{ absolute_url(asset('assets/js/jquery.min.js')) }}"></script>
             <script src="{{ absolute_url(asset('assets/vendor/bootstrap/js/bootstrap.min.js')) }}"></script>
             <script src="{{ absolute_url(asset('assets/vendor/OwlCarousel/owl.carousel.js')) }}"></script>
+            <script src="{{ absolute_url(asset('assets/vendor/slick/slick.min.js')) }}"></script>
             <script src="{{ absolute_url(asset('assets/js/app.js')) }}"></script>
         {% endblock %}
     </body>
