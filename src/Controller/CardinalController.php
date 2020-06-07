@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Cache\CacheInterface;
 
 /**
  * @Route("/backend/cardinal")
@@ -20,11 +21,13 @@ class CardinalController extends AbstractController
 {
     private $gestionMedia;
     private $log;
+    private $cache;
 
-    public function __construct(GestionMedia $gestionMedia, GestionLog $log)
+    public function __construct(GestionMedia $gestionMedia, GestionLog $log, CacheInterface $cache)
     {
         $this->gestionMedia = $gestionMedia;
         $this->log = $log;
+        $this->cache = $cache;
     }
 
     /**
@@ -88,6 +91,9 @@ class CardinalController extends AbstractController
             $action = $this->getUser()->getUsername()." a enregistré le message du Cardinal qui a pour theme ".$cardinal->getTheme();
             $this->log->addLog($action);
 
+            // Effacer le cache
+            $this->cache->delete('cardinal');
+
             return $this->redirectToRoute('cardinal_index');
         }
 
@@ -146,6 +152,9 @@ class CardinalController extends AbstractController
             $action = $this->getUser()->getUsername()." a modifié le message du Cardinal qui a pour theme ".$cardinal->getTheme();
             $this->log->addLog($action);
 
+            // Effacer le cache
+            $this->cache->delete('cardinal');
+
             return $this->redirectToRoute('cardinal_index');
         }
 
@@ -172,6 +181,9 @@ class CardinalController extends AbstractController
 
             // Creation du log
             $this->log->addLog($action);
+
+            // Effacer le cache
+            $this->cache->delete('cardinal');
         }
 
         return $this->redirectToRoute('cardinal_index');

@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Cache\CacheInterface;
 
 /**
  * @Route("/backend/actualite")
@@ -20,11 +21,13 @@ class ActualiteController extends AbstractController
 {
     private $log;
     private $gestionMedia;
+    private $cache;
 
-    public function __construct(GestionLog $log, GestionMedia $gestionMedia)
+    public function __construct(GestionLog $log, GestionMedia $gestionMedia, CacheInterface $cache)
     {
         $this->log = $log;
         $this->gestionMedia = $gestionMedia;
+        $this->cache = $cache;
     }
 
     /**
@@ -77,6 +80,9 @@ class ActualiteController extends AbstractController
             // Creation du log
             $action = $this->getUser()->getUsername()." a enregistré l'article".$actualite->getTitre()." dans actualité";
             $this->log->addLog($action);
+
+            // Effacer le cache
+            $this->cache->delete($actualite->getSlug());
 
             return $this->redirectToRoute('actualite_index');
         }
@@ -133,6 +139,9 @@ class ActualiteController extends AbstractController
             $this->log->addLog($action);
 
             $this->addFlash('success', "Actualité modifiée avec succès");
+
+            // Effacer le cache
+            $this->cache->delete($actualite->getSlug());
 
             return $this->redirectToRoute('actualite_index');
         }

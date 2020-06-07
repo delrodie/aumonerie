@@ -8,10 +8,16 @@ use App\Repository\PresentationRepository;
 use App\Utilities\GestionLog;
 use App\Utilities\GestionMedia;
 use Cocur\Slugify\Slugify;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\BufferedOutput;
+use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Cache\CacheInterface;
 
 /**
  * @Route("/backend/presentation")
@@ -21,12 +27,14 @@ class PresentationController extends AbstractController
     private $presentationRepository;
     private $log;
     private $gestionMedia;
+    private $cache;
 
-    public function __construct(PresentationRepository $presentationRepository, GestionMedia $gestionMedia, GestionLog $log)
+    public function __construct(PresentationRepository $presentationRepository, GestionMedia $gestionMedia, GestionLog $log, CacheInterface $cache)
     {
         $this->presentationRepository = $presentationRepository;
         $this->log = $log;
         $this->gestionMedia = $gestionMedia;
+        $this->cache = $cache;
     }
 
     /**
@@ -91,6 +99,9 @@ class PresentationController extends AbstractController
             $action = $this->getUser()->getUsername()." a enregistré la rubrique ".$presentation->getRubrique()." dans Qui sommes-nous?";
             $this->log->addLog($action);
 
+            // Effacer le cache
+            $this->cache->delete($presentation->getRubrique());
+
             return $this->redirectToRoute('presentation_index');
         }
 
@@ -149,6 +160,9 @@ class PresentationController extends AbstractController
             $action = $this->getUser()->getUsername()." a modifié la rubrique ".$presentation->getRubrique()." dans Qui sommes-nous?";
             $this->log->addLog($action);
 
+            // Effacer le cache
+            $this->cache->delete($presentation->getRubrique());
+
             return $this->redirectToRoute('presentation_index');
         }
 
@@ -170,11 +184,15 @@ class PresentationController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$presentation->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $action = $this->getUser()->getUsername()." a suprimé la rubrique ".$presentation->getRubrique()." dans Qui sommes-nous?";
+            $rubrique = $presentation->getRubrique();
             $entityManager->remove($presentation);
             $entityManager->flush();
 
             // Creation du log
             $this->log->addLog($action);
+
+            // Effacer le cache
+            $this->cache->delete($rubrique);
         }
 
         return $this->redirectToRoute('presentation_index');
