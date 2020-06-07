@@ -31,7 +31,7 @@ class AccueilController extends AbstractController
 
         return $this->render('accueil/index.html.twig', [
             'cardinal' => $cardinalRepository->findOneBy([],['id'=>"DESC"]),
-            'vision' => $presentationRepository->findOneBy(['rubrique'=>"vision"]),
+            'vision' => $presentationRepository->findOneBy(['rubrique'=>"mission"]),
             'actualites' => $actualiteRepository->findBy([],['id'=>'DESC']),
             'sliders' => $sliderRepository->findBy([],['id'=>'DESC'])
         ]);
