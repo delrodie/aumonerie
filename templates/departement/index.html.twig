@@ -1,0 +1,86 @@
+{% extends 'backoffice_layout.html.twig' %}
+
+{% block title %}{{ parent() }} Gestion des départements{% endblock %}
+
+{% block body %}
+    <div class="page-content-wrapper dashboard">
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Gestion des départements </h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <h4 class="mt-0 header-title">
+                                Liste des départements
+                                <div class="float-right">
+                                    <a href="{{ path('departement_new') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Ajouter un départment</a>
+                                </div>
+                            </h4>
+
+                            {% for label, messages in app.flashes %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{ label }} alert-dismissible fade show d-flex align-items-center" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        {% if label =="success" %}
+                                            <i class="mdi mdi-checkbox-marked-circle font-32"></i>
+                                            <strong class="pr-1">Succes !</strong>
+                                        {% else %}
+                                            <i class="mdi mdi-close-circle font-32"></i>
+                                            <strong class="pr-1">Erreur !</strong>
+                                        {% endif %}
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+
+                            <div class="row mt-3">
+                                <div class="col-12 accordion" id="missionDepartement">
+                                    {% for departement in departements %}
+                                        <div class="card">
+                                            <div class="card-header" id="headingOne">
+                                                <h2 class="mb-0">
+                                                    <button class="btn btn-link btn-block text-left" type="button"
+                                                            data-toggle="collapse" data-target="#{{ departement.slug }}"
+                                                            aria-expanded="true" aria-controls="collapseOne">
+                                                        {{ departement.titre }}
+                                                    </button>
+                                                </h2>
+                                            </div>
+
+                                            <div id="{{ departement.slug }}" class="collapse {% if loop.first %}show{% endif %}" aria-labelledby="headingOne"
+                                                 data-parent="#missionDepartement">
+                                                <div class="card-body">
+                                                    {{ departement.contenu|raw}}
+                                                </div>
+                                                <div class="text-center mb-5">
+                                                    <a href="{{ path('departement_edit', {'id': departement.id}) }}"
+                                                       class="btn btn-primary">Modifier</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}
