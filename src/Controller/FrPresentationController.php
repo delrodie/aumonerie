@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Entity\Presentation;
+use App\Repository\DepartementRepository;
 use App\Repository\PresentationRepository;
 use App\Utilities\GestionLog;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,12 +22,14 @@ class FrPresentationController extends AbstractController
     private $log;
     private $cache;
     private $presentationRepository;
+    private $departementRepository;
 
-    public function __construct(GestionLog $log, CacheInterface $cache, PresentationRepository $presentationRepository)
+    public function __construct(GestionLog $log, CacheInterface $cache, PresentationRepository $presentationRepository,DepartementRepository $departementRepository)
     {
         $this->log = $log;
         $this->cache = $cache;
         $this->presentationRepository = $presentationRepository;
+        $this->departementRepository = $departementRepository;
     }
 
     /**
@@ -34,7 +37,9 @@ class FrPresentationController extends AbstractController
      */
     public function departements()
     {
-        return $this->render("frontend/departements.html.twig");
+        return $this->render("frontend/departements.html.twig",[
+            'departements' => $this->departementRepository->findBy([],['ordre'=>"ASC"]),
+        ]);
     }
 
     /**

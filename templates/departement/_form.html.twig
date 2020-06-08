@@ -2,7 +2,10 @@
     <div class="form-group">
         <div class="row">
             <div class="col-md-4">
-                {{ form_row(form.titre) }}
+                <div class="row">
+                    <div class="col-12">{{ form_row(form.titre) }}</div>
+                    <div class="col-12 mt-3">{{ form_row(form.ordre) }}</div>
+                </div>
             </div>
             <div class="col-md-8">
                 {{ form_row(form.contenu) }}

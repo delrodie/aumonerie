@@ -29,22 +29,46 @@
                     </span>
                 </a>
                 <ul>
-                    <li><a href="#">DEPARTEMENT FINANCE ET COMPTABILITE</a></li>
-                    <li><a href="#">DEPARTEMENT COMMUNICATION</a></li>
-                    <li>
-                        <a href="#">DEPARTEMENT ORGANISATION</a>
-                        <ul>
-                            <li><a href="#">SERVICE OPERATIONNEL</a></li>
-                            <li><a href="#">SERVICE LITURGIQUE</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">DEPARTEMENT DES AFFAIRES SOCIALES ET CULTURELLES</a></li>
-                    <li><a href="#">DEPARTEMENT ADMINISTRATION</a></li>
+                    {% for departement in departements %}
+                        <li>
+                            <a href="#{{ departement.slug }}{{ departement.id }}">{{ departement.titre|upper }}</a>
+                            {% if departement.ordre == 3 %}
+                                <ul>
+                                    <li><a href="#">SERVICE OPERATIONNEL</a></li>
+                                    <li><a href="#">SERVICE LITURGIQUE</a></li>
+                                </ul>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
                 </ul>
             </li>
         </ul>
     </div>
-    <div class="container" style="margin-bottom: 300px;">
-        <div class="row"></div>
+    <div class="separateur" style="margin-top: 100px;">.</div>
+    <div class="container" style="margin-bottom: 300px; margin-top: 200px;">
+        <div class="row mt-5">
+            <div class="col-12 accordion" id="missionDepartement">
+                {% for departement in departements %}
+                    <div class="card" id="{{ departement.slug }}{{ departement.id }}">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left" type="button"
+                                        data-toggle="collapse" data-target="#{{ departement.slug }}"
+                                        aria-expanded="true" aria-controls="collapseOne">
+                                    {{ departement.titre }}
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="{{ departement.slug }}" class="collapse" aria-labelledby="headingOne"
+                             data-parent="#missionDepartement">
+                            <div class="card-body">
+                                {{ departement.contenu|raw}}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 {% endblock %}

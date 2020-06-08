@@ -32,6 +32,11 @@ class Departement
      */
     private $slug;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $ordre;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Departement
     public function setSlug(?string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getOrdre(): ?int
+    {
+        return $this->ordre;
+    }
+
+    public function setOrdre(?int $ordre): self
+    {
+        $this->ordre = $ordre;
 
         return $this;
     }
