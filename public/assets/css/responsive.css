@@ -30,6 +30,13 @@
   .accueil-vision .agenda img {
     margin-top: 10px;
   }
+
+  .organigramme li {
+    margin-bottom: 12px;
+  }
+  .organigramme li a {
+    font-size: 8px;
+  }
 }
 @media screen and (min-width: 469px) and (max-width: 768px) {
   .accueil-carousel .logo-partenaire {
@@ -37,7 +44,7 @@
   }
 
   .accueil-presentation .presentation-img {
-    margin-top: 50px;
+    margin-top: 200px;
   }
 
   .accueil-vision .agenda {
@@ -49,21 +56,25 @@
     margin-top: 10px;
   }
 
-  .organigramme a {
+  .organigramme li {
+    margin-bottom: 6px;
+  }
+  .organigramme li a {
     font-size: 8px;
   }
 }
-@media screen and (min-width: 769px) {
-  .presentation-img img:nth-child(1) {
-    max-width: 400px;
-  }
-  .presentation-img img:nth-child(2) {
-    max-width: 500px;
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .presentation-img img {
+    margin-top: 100px;
   }
 }
-@media screen and (min-width: 1024px) and (max-width: 1440px) {
-  .organigramme a {
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  .organigramme li a {
     font-size: 8px;
+  }
+
+  .presentation-img img {
+    top: -100px;
   }
 }
 
