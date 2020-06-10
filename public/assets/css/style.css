@@ -446,7 +446,7 @@ footer .copyright a {
   border-radius: 0;
   position: absolute;
   z-index: 1;
-  top: -180px;
+  top: -100px;
 }
 .accueil-presentation .presentation-video {
   text-align: center;
