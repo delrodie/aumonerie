@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Programme {% endblock %}
+
+{% block body %}
+    <div class="container" style="margin-bottom: 150px;">
+        <div class="row">
+            <div class="col-12">
+                <ul class="ariane">
+                    <li class="ariane-item"><a href="{{ path('app_accueil') }}"><i class="fa fa-home"></i></a></li>&raquo;
+                    <li class="ariane-item active">Programme</li>&raquo;
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 page-secondaire">
+                <h4 class="barre-orange"><div class="point"></div>Programme</h4>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-md-12"><h3><u>Année Pastorale</u>: <strong>{{ programme.annee }}</strong></h3></div>
+                            <div class="col-md-12">
+                                <h3><u>Thème</u>: {{ programme.theme|raw }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <table class="table table-sm table-bordered table-hover mt-5 mb-5">
+                            <thead>
+                            <tr class="text-center"style="background-color:#f5f3f3;">
+                                <th scope="col">DATES ACTIVITES</th>
+                                <th scope="col">ACTIVITES</th>
+                                <th scope="col">LIEUX</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for activite in programme.activites %}
+                                <tr>
+                                    <th scope="row" class="text-center">{{ activite.date|date('d-m-Y') }}</th>
+                                    <td>{{ activite.description|raw }}</td>
+                                    <td>{{ activite.lieu }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
