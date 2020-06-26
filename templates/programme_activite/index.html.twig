@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProgrammeActivite index{% endblock %}
+
+{% block body %}
+    <h1>ProgrammeActivite index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Lieu</th>
+                <th>Reportage</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for programme_activite in programme_activites %}
+            <tr>
+                <td>{{ programme_activite.id }}</td>
+                <td>{{ programme_activite.date }}</td>
+                <td>{{ programme_activite.description }}</td>
+                <td>{{ programme_activite.lieu }}</td>
+                <td>{{ programme_activite.reportage }}</td>
+                <td>
+                    <a href="{{ path('programme_activite_show', {'id': programme_activite.id}) }}">show</a>
+                    <a href="{{ path('programme_activite_edit', {'id': programme_activite.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('programme_activite_new') }}">Create new</a>
+{% endblock %}

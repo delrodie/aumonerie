@@ -19,6 +19,18 @@ class ProgrammeRepository extends ServiceEntityRepository
         parent::__construct($registry, Programme::class);
     }
 
+    /**
+     * @param $programme
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function findProgramme($programme)
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.id = :programme')
+            ->setParameter('programme', $programme)
+            ;
+    }
+
     // /**
     //  * @return Programme[] Returns an array of Programme objects
     //  */

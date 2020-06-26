@@ -44,30 +44,27 @@
                                         <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>ANNEES</th>
-                                            <th>THEMES</th>
-                                            <th>ACTIONS</th>
+                                            <th>DATES</th>
+                                            <th>ACTIVITES</th>
+                                            <th>LIEUX</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {% for programme in programmes %}
+                                        {% for activite in activites %}
                                             <tr>
                                                 <td>{{ loop.index }}</td>
-                                                <td class="text-center">{{ programme.annee }}</td>
-                                                <td>{{ programme.theme }}</td>
                                                 <td class="text-center">
-                                                    <a href="{{ path('programme_edit', {'id': programme.id}) }}">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a> |
-                                                    <a href="{{ path('programme_activite_new', {'programme': programme.id}) }}"><i class="fa fa-plus"></i></a>
+                                                    <a href="{{ path('programme_activite_edit', {'id': activite.id}) }}">{{ activite.date }}</a>
                                                 </td>
+                                                <td>{{ activite.description|raw }}</td>
+                                                <td>{{ activite.lieu }}</td>
                                             </tr>
                                         {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="col-4">
-                                    {{ include('programme/_form.html.twig') }}
+                                    {{ include('programme_activite/_form.html.twig') }}
                                 </div>
                             </div>
 
@@ -84,6 +81,13 @@
     <link rel="stylesheet" href="{{ asset('backoffice/plugins/datatables/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backoffice/plugins/datatables/buttons.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backoffice/plugins/datatables/responsive.bootstrap4.min.css') }}">
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('backoffice/plugins/summernote/summernote-bs4.css') }}">
+    <style>
+        .summernote{
+            background-color: transparent !important;
+        }
+    </style>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
@@ -100,6 +104,9 @@
     <script src="{{ asset('backoffice/plugins/datatables/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('backoffice/plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('backoffice/pages/datatables.init.js') }}"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <script src="{{ asset('backoffice/plugins/summernote/summernote-bs4.min.js') }}"></script>
+    <script src="{{ asset('backoffice/pages/form-summernote.init.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('#monitoring').DataTable( {
@@ -108,5 +115,9 @@
                 }
             } );
         } );
+        $('.datepicker').datepicker({
+            uiLibrary: 'bootstrap4',
+            format: 'yyyy-mm-dd',
+        });
     </script>
 {% endblock %}
