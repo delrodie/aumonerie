@@ -1,0 +1,35 @@
+{% extends 'backoffice_layout.html.twig' %}
+
+{% block title %}{{ parent() }} Tableau de bord{% endblock %}
+
+{% block body %}
+    <div class="page-content-wrapper dashboard">
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Tableau de bord</h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ absolute_url(asset('backoffice/plugins/chartist/css/chartist.min.css')) }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ absolute_url(asset('backoffice/plugins/chart.js/chart.min.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/plugins/chartist/js/chartist-plugin-tooltip.min.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/pages/chartist.init.js')) }}"></script>
+    <script src="{{ absolute_url(asset('backoffice/pages/dashborad.js')) }}"></script>
+{% endblock %}

@@ -55,6 +55,6 @@ class AccueilController extends AbstractController
         // Creation du log
         $action = "Anonyme a tenté de se connecter au backoffice";
         $this->log->addLog($action);
-        return $this->render("accueil/dashbord.html.twig");
+        return $this->render("accueil/dashbord2.html.twig");
     }
 }
